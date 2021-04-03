@@ -31,6 +31,13 @@ code {
 }
 .EditView {
 	transition: opacity 300ms ease-out;
+	width: 56%;
+	min-width: 300px;
+	opacity: 1;
+}
+
+.EditView.presenter {
+	opacity: 0;
 }
 .ShuffleButton {
 	background: linear-gradient(90deg, #495aff, #0acffe);

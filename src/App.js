@@ -155,12 +155,12 @@ function App() {
       />
       <div className="grid gap-4 grid-cols-3 h-full px-10 py-7">
         <div
-          className="EditView relative z-10"
-          style={{
-            width: "56%",
-            minWidth: "300px",
-            opacity: !presenter ? 0.9 : 0,
-          }}
+          className={`
+        EditView 
+        relative 
+        z-10 
+        ${presenter && "presenter"}
+        `}
         >
           <PlayerInputForm onAddPlayer={handleAddPlayer} />
           <div className="mt-2">
@@ -213,7 +213,7 @@ function App() {
             className="inline-block SettingsIcon text-white rounded uppercase font-bold px-2"
             onClick={handlePresenterMode}
           >
-            <ReactTooltip />
+            {/*<ReactTooltip />*/}
             <div>
               <img
                 style={{ height: "65px", width: "65px" }}
