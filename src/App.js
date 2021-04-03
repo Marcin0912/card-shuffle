@@ -60,10 +60,8 @@ function App() {
       return;
     }
     const color = randomRgba();
-    let textColor = "#212121";
-    if (lightOrDark(color) === "dark") {
-      textColor = "#f8f8ff";
-    }
+    const textColor = lightOrDark(color) === "dark" ? "#f8f8ff" : "#212121";
+
     const newPlayer = {
       id: uuid(),
       name: event.target.elements.player.value.trim(),
