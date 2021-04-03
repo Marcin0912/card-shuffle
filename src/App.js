@@ -56,7 +56,6 @@ function App() {
           show: true,
         },
       });
-      // alert(`${event.target.elements.player.value} already exists`);
       return;
     }
     const color = randomRgba();
@@ -74,10 +73,11 @@ function App() {
   };
 
   const findDuplicateName = (name) => {
-    return players.reduce((match, p) => {
+    players.reduce((match, p) => {
       return p.name.toLowerCase().includes(name.trim().toLowerCase());
     }, 0);
   };
+
   const handleRemovePlayer = (id) => {
     dispatch({
       type: "REMOVE_PLAYER",
