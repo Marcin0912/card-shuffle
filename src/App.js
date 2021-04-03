@@ -144,10 +144,7 @@ function App() {
   ));
 
   return (
-    <div
-      style={{ backgroundColor: "#2e2d2e", height: "100vh" }}
-      className="App"
-    >
+    <div className="App">
       <Modal modal={modal} dispatch={dispatch} />
       <Settings
         closeMenu={toggleMenu}
