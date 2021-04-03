@@ -21,7 +21,7 @@ import settingsIcon from "./assets/assets-btn-icon.svg";
 import presenterIcon from "./assets/assets-btn-icon-presenter.svg";
 
 function App() {
-  const [state, updateState] = React.useReducer(cardReducer, {
+  const [state, dispatch] = React.useReducer(cardReducer, {
     players: [],
     settingsMenu: false,
     showRemove: false,
@@ -49,7 +49,7 @@ function App() {
       players.length &&
       findDuplicateName(event.target.elements.player.value)
     ) {
-      updateState({
+      dispatch({
         type: "SHOW_MODAL",
         payload: {
           message: `"${event.target.elements.player.value}" already exists.`,
@@ -70,8 +70,8 @@ function App() {
       color: color,
       textColor: textColor,
     };
-    updateState({ type: "ANIMATE", payload: false });
-    updateState({ type: "ADD_PLAYER", payload: newPlayer });
+    dispatch({ type: "ANIMATE", payload: false });
+    dispatch({ type: "ADD_PLAYER", payload: newPlayer });
     event.target.elements.player.value = "";
   };
 
@@ -81,52 +81,52 @@ function App() {
     }, 0);
   };
   const handleRemovePlayer = (id) => {
-    updateState({
+    dispatch({
       type: "REMOVE_PLAYER",
       payload: players.filter((player) => player.id !== id),
     });
-    updateState({
+    dispatch({
       type: "HIDE_TABS",
       payload: true,
     });
-    updateState({ type: "ANIMATE", payload: false });
+    dispatch({ type: "ANIMATE", payload: false });
   };
   const handleContinue = () => {
-    updateState({
+    dispatch({
       type: "HIDE_TABS",
       payload: true,
     });
-    updateState({ type: "ANIMATE", payload: false });
+    dispatch({ type: "ANIMATE", payload: false });
   };
   const reset = () => {
-    updateState({ type: "RESET_PLAYERS", payload: [] });
-    updateState({
+    dispatch({ type: "RESET_PLAYERS", payload: [] });
+    dispatch({
       type: "HIDE_TABS",
       payload: true,
     });
   };
   const handlePresenterMode = () => {
-    updateState({ type: "PRESENTER_MODE", payload: !presenter });
-    updateState({ type: "ANIMATE", payload: false });
+    dispatch({ type: "PRESENTER_MODE", payload: !presenter });
+    dispatch({ type: "ANIMATE", payload: false });
   };
   const shuffleCards = () => {
     if (!state.players.length) {
       return;
     }
-    updateState({ type: "ANIMATE", payload: true });
+    dispatch({ type: "ANIMATE", payload: true });
     const playersCopy = [...players];
-    updateState({
+    dispatch({
       type: "SHUFFLE_CARDS",
       payload: shuffle(playersCopy),
     });
-    updateState({
+    dispatch({
       type: "HIDE_TABS",
       payload: false,
     });
   };
   const toggleMenu = () => {
-    updateState({ type: "ANIMATE", payload: false });
-    updateState({ type: "MENU_OPEN", payload: !settingsMenu });
+    dispatch({ type: "ANIMATE", payload: false });
+    dispatch({ type: "MENU_OPEN", payload: !settingsMenu });
   };
   const randomRgba = () => {
     const o = Math.round,
@@ -149,10 +149,10 @@ function App() {
       style={{ backgroundColor: "#2e2d2e", height: "100vh" }}
       className="App"
     >
-      <Modal modal={modal} updateState={updateState} />
+      <Modal modal={modal} dispatch={dispatch} />
       <Settings
         closeMenu={toggleMenu}
-        updateState={updateState}
+        dispatch={dispatch}
         settingsState={state}
       />
       <div className="grid gap-4 grid-cols-3 h-full px-10 py-7">
