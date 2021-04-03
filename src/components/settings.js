@@ -8,8 +8,8 @@ import Switch from "react-input-switch";
 const Settings = ({ closeMenu, settingsState, dispatch }) => {
   const [mod, setMod] = React.useState(0);
 
-  const { settingsMenu, shouldRunAnimation } = settingsState;
-  const transform = settingsMenu ? "open" : "";
+  const { isOpenClass, shouldRunAnimation } = settingsState;
+  const transform = isOpenClass ? "open" : "";
 
   const handleAnimation = (value) => {
     dispatch({ type: "SHOULD_ANIMATE", payload: value });

@@ -23,7 +23,7 @@ import presenterIcon from "./assets/assets-btn-icon-presenter.svg";
 function App() {
   const [state, dispatch] = React.useReducer(cardReducer, {
     players: [],
-    settingsMenu: false,
+    isOpenClass: false,
     showRemove: false,
     presenter: false,
     animate: false,
@@ -33,7 +33,7 @@ function App() {
   const {
     animate,
     players,
-    settingsMenu,
+    isOpenClass,
     showRemove,
     presenter,
     shouldRunAnimation,
@@ -124,7 +124,7 @@ function App() {
   };
   const toggleMenu = () => {
     dispatch({ type: "ANIMATE", payload: false });
-    dispatch({ type: "MENU_OPEN", payload: !settingsMenu });
+    dispatch({ type: "MENU_OPEN", payload: !isOpenClass });
   };
   const randomRgba = () => {
     const o = Math.round;
