@@ -11,7 +11,7 @@ const Settings = ({ closeMenu, settingsState, dispatch }) => {
   const { settingsMenu, shouldRunAnimation } = settingsState;
   const transform = settingsMenu ? "open" : "";
 
-  const handleAnim = (value) => {
+  const handleAnimation = (value) => {
     dispatch({ type: "SHOULD_ANIMATE", payload: value });
   };
 
@@ -77,7 +77,7 @@ const Settings = ({ closeMenu, settingsState, dispatch }) => {
             on={true}
             off={false}
             value={shouldRunAnimation}
-            onChange={handleAnim}
+            onChange={handleAnimation}
           />
         </div>
       </div>
