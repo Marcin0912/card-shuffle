@@ -1,5 +1,14 @@
 import * as React from "react";
 
+/**
+ *
+ * @param key
+ * @param defaultValue
+ * @param serialize
+ * @param deserialize
+ * @returns {(any|string|((value: (((prevState: (any|string)) => (any|string)) | any | string)) => void))[]}
+ */
+
 function useLocalStorageState(
   key,
   defaultValue = "",
