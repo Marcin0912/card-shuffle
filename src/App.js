@@ -1,5 +1,5 @@
 import React from "react";
-import ReactTooltip from "react-tooltip";
+// import ReactTooltip from "react-tooltip";
 import Modal from "./components/modal";
 import Player from "./components/player";
 import Button from "./components/button";
@@ -127,8 +127,8 @@ function App() {
     dispatch({ type: "MENU_OPEN", payload: !settingsMenu });
   };
   const randomRgba = () => {
-    const o = Math.round,
-      r = random;
+    const o = Math.round;
+    const r = random;
     return (
       "rgb(" + o(r(0, 255)) + "," + o(r(0, 255)) + "," + o(r(0, 255)) + ")"
     );
