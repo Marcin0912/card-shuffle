@@ -136,7 +136,8 @@ function App() {
 
   const playersList = players.map((player) => (
     <Player
-      onRemove={() => handleRemovePlayer(player.id)}
+      onRemove={handleRemovePlayer}
+      id={player.id}
       key={player.id}
       name={player.name}
     />
