@@ -1,5 +1,5 @@
 import React from "react";
-// import ReactTooltip from "react-tooltip";
+import Tooltip from "./tooltip";
 import Modal from "./components/modal";
 import Player from "./components/player";
 import Button from "./components/button";
@@ -13,8 +13,6 @@ import { v4 as uuid } from "uuid";
 import shuffle from "lodash/shuffle";
 import throttle from "lodash/throttle";
 import { random, lightOrDark } from "./utils";
-
-import "./App.css";
 
 import shuffleDeck from "./assets/icons-ph-stack.svg";
 import settingsIcon from "./assets/assets-btn-icon.svg";
@@ -192,9 +190,9 @@ function App() {
             shouldRunAnimation={shouldRunAnimation}
           />
         </div>
-        <div className="ml-auto">
+        <div className="Nav">
           <Button
-            className="ShuffleButton text-white font-bold  bg-white rounded uppercase shadow-laura"
+            className="ShuffleButton text-white font-bold  bg-white rounded uppercase shadow-laura flex-start"
             onClick={throttle(() => shuffleCards(), 4000)}
           >
             <img
@@ -204,25 +202,28 @@ function App() {
             />
             <div className="inline-block">Shuffle Cards</div>
           </Button>
-          <Button
-            data-tip={
-              !presenter ? `Switch to Presenter Mode` : `Switch to Edit Mode`
+          <Tooltip
+            className="Nav_button"
+            content={
+              presenter ? `Switch to Edit Mode` : `Switch to Presenter Mode`
             }
-            className="inline-block SettingsIcon text-white rounded uppercase font-bold px-2"
-            onClick={handlePresenterMode}
           >
-            {/*<ReactTooltip />*/}
-            <div>
-              <img
-                style={{ height: "65px", width: "65px" }}
-                className="inline-block"
-                src={presenterIcon}
-                alt="Open Settings"
-              />
-            </div>
-          </Button>
+            <Button
+              className="inline-block SettingsIcon text-white rounded uppercase font-bold px-2"
+              onClick={handlePresenterMode}
+            >
+              <div>
+                <img
+                  style={{ height: "65px", width: "65px" }}
+                  className="inline-block"
+                  src={presenterIcon}
+                  alt="Open Settings"
+                />
+              </div>
+            </Button>
+          </Tooltip>
           <Button
-            className="inline-block SettingsIcon text-white rounded uppercase font-bold px-2 pl-0"
+            className="Nav_button inline-block SettingsIcon text-white rounded uppercase font-bold px-2 pl-0"
             onClick={toggleMenu}
           >
             <img
