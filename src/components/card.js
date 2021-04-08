@@ -2,8 +2,9 @@ import React from "react";
 import Tilt from "react-parallax-tilt";
 
 const Card = React.forwardRef(
-  ({ player, rotate, currentCard, index, children }, ref) => {
-    const top = currentCard() ? 0 : rotate();
+  ({ player, rotate, isLastCard, index, children }, ref) => {
+    const isLast = isLastCard(player);
+    const top = isLast ? 0 : rotate();
     const cardStyles = {
       background: player.color,
       color: player.textColor,
@@ -13,14 +14,14 @@ const Card = React.forwardRef(
       transform: `rotate(${top}deg)`,
     };
 
-    if (currentCard()) {
+    if (isLast) {
       return (
         <div ref={ref} className=" relative Card">
           <Tilt scale={1.02} perspective={1000}>
             <div
               style={cardStyles}
               className={`rounded-lg w-full m-auto flex relative px-12 ${
-                currentCard() ? "shadow-laura" : ""
+                isLast ? "shadow-laura" : ""
               }`}
             >
               <span className="m-auto font-thin text-5xl">{player.name}</span>

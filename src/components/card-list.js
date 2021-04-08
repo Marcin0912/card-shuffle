@@ -16,7 +16,7 @@ const CardList = ({
   handleContinue,
   handleRemovePlayer,
 }) => {
-  const calculateCurrentPlayer = (player) => {
+  const isLastCard = (player) => {
     const playersCopy = [...players];
     const current = playersCopy.pop();
     return current.id === player.id;
@@ -30,9 +30,9 @@ const CardList = ({
         player={player}
         rotate={rotate}
         index={i}
-        currentCard={() => calculateCurrentPlayer(player)}
+        isLastCard={isLastCard}
       >
-        {!showRemove && calculateCurrentPlayer(player) && (
+        {!showRemove && isLastCard(player) && (
           <div className="absolute w-full left-0 grid grid-cols-3 gap-0.2">
             <Button
               onClick={handleContinue}
