@@ -5,6 +5,32 @@ import PlayIcon from "../assets/icons-ph-monitor-play.svg";
 import OffsetCheckboxIcon from "../assets/icons-ph-check-square-offset.svg";
 import Switch from "react-input-switch";
 
+const SwitchButtonStyles = {
+  container: {
+    width: "46px",
+  },
+  track: {
+    backgroundColor: "#f0f0f0",
+    width: "30px",
+    height: "15px",
+  },
+  trackChecked: {
+    backgroundColor: "#80bb41",
+  },
+  button: {
+    backgroundColor: "#f0f0f0",
+    top: "-2px",
+    left: "-5px",
+    height: "20px",
+    width: "20px",
+    boxShadow: "0px 0px 6px rgba(68, 68, 68, 0.3)",
+  },
+  buttonChecked: {
+    backgroundColor: "#c5ff85",
+    left: "20px",
+  },
+};
+
 const Settings = ({ closeMenu, settingsState, dispatch }) => {
   const [mod, setMod] = React.useState(0);
 
@@ -49,31 +75,7 @@ const Settings = ({ closeMenu, settingsState, dispatch }) => {
         </div>
         <div className="pl-16">
           <Switch
-            styles={{
-              container: {
-                width: "46px",
-              },
-              track: {
-                backgroundColor: "#f0f0f0",
-                width: "30px",
-                height: "15px",
-              },
-              trackChecked: {
-                backgroundColor: "#80bb41",
-              },
-              button: {
-                backgroundColor: "#f0f0f0",
-                top: "-2px",
-                left: "-5px",
-                height: "20px",
-                width: "20px",
-                boxShadow: "0px 0px 6px rgba(68, 68, 68, 0.3)",
-              },
-              buttonChecked: {
-                backgroundColor: "#c5ff85",
-                left: "20px",
-              },
-            }}
+            styles={SwitchButtonStyles}
             on={true}
             off={false}
             value={shouldRunAnimation}
@@ -92,31 +94,7 @@ const Settings = ({ closeMenu, settingsState, dispatch }) => {
         </div>
         <div className="pl-16">
           <Switch
-            styles={{
-              container: {
-                width: "46px",
-              },
-              track: {
-                backgroundColor: "#f0f0f0",
-                width: "30px",
-                height: "15px",
-              },
-              trackChecked: {
-                backgroundColor: "#80bb41",
-              },
-              button: {
-                backgroundColor: "#f0f0f0",
-                top: "-2px",
-                left: "-5px",
-                height: "20px",
-                width: "20px",
-                boxShadow: "0px 0px 6px rgba(68, 68, 68, 0.3)",
-              },
-              buttonChecked: {
-                backgroundColor: "#c5ff85",
-                left: "20px",
-              },
-            }}
+            styles={SwitchButtonStyles}
             on="yes"
             off="no"
             value={mod}
