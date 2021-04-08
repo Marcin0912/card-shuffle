@@ -40,7 +40,8 @@ function App() {
 
   const handleAddPlayer = (event) => {
     event.preventDefault();
-    if (event.target.elements.player.value === "") {
+    if (event.target.elements.player.value.trim() === "") {
+      event.target.reset();
       return;
     }
     if (
@@ -58,16 +59,17 @@ function App() {
     }
     const color = randomRgba();
     const textColor = lightOrDark(color) === "dark" ? "#f8f8ff" : "#212121";
-
+    const { player } = event.target.elements;
     const newPlayer = {
       id: uuid(),
-      name: event.target.elements.player.value.trim(),
+      name: player?.value.trim(),
       color: color,
       textColor: textColor,
     };
     dispatch({ type: "ANIMATE", payload: false });
     dispatch({ type: "ADD_PLAYER", payload: newPlayer });
-    event.target.elements.player.value = "";
+    // Set the value to empty again
+    event.target.reset();
   };
 
   const findDuplicateName = (name) => {
