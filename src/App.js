@@ -72,11 +72,10 @@ function App() {
     event.target.reset();
   };
 
-  const findDuplicateName = (name) => {
+  const findDuplicateName = (name) =>
     players.reduce((match, p) => {
       return p.name.toLowerCase().includes(name.trim().toLowerCase());
     }, 0);
-  };
 
   const handleRemovePlayer = (id) => {
     dispatch({
