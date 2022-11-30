@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+	width: 100%;
+	position:absolute;
+	
+}
+button:focus {
+	outline: 0 !important;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+	text-align: center;
+	background-color: #2e2d2e;
+	height: 100vh;
+}
+
+.Card {
+	transition: all 1000ms ease-out;
+}
+.CardButton {
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 30px;
+	
+}
+.EditView {
+	transition: opacity 300ms ease-out;
+	width: 56%;
+	min-width: 300px;
+	opacity: 1;
+}
+
+.EditView.presenter {
+	opacity: 0;
+}
+.ShuffleButton {
+	display:grid;
+	grid-template-columns: 50px 1fr;
+	grid-column-gap:5px;
+	background: linear-gradient(90deg, #495aff, #0acffe);
+	padding: 18px;
+}
+.SettingsMenu {
+	transition: transform 300ms ease-out;
+	transform: translate(500px, 20px);
+}
+.SettingsMenu.open {
+	transform: translate(0px, 0px);
+	
+}
+
+.Nav {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+.Nav_button {
+	flex-shrink: 0;
+}
+
+.tooltip {
+	display:flex;
+	position: absolute;
+	background-color: rgba(11, 10, 12, 0.5);
+	padding:10px;
+	color: cornsilk;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size: 16px;
+	border-radius: 5px;
+	opacity: 1;
+	margin-top:11px;
+	/*left: 50%;*/
+	/*transform: translate(-50%, 0);*/
+}
+.tooltip:after {
+	content: '';
+	position:absolute;
+	top:-10px;
+	left:10px;
+	width:0;
+	height:0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid rgba(11, 10, 12, 0.5);
+}
